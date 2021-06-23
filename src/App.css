@@ -3,6 +3,8 @@ body {
 }
 .title {
   padding: 20px;
+  background-color: #38464b;
+  color: #dcdcdc;
 }
 .form-wrapper {
   /* border: 5px solid black; */
@@ -23,4 +25,5 @@ body {
 
 .recipe-search {
   width: 325px;
+  margin:10px;
 }

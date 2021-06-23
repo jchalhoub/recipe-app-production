@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // npm i --save react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import Recipe from "./components/recipe";
@@ -14,9 +14,6 @@ function App() {
   }
 
   const API_KEY = "af05afad0df44c5ba65ebdecb50697dc";
-
-  var apiKey = "your-api-key-here";
-  var RecipeID = 196149;
 
   const [query, setQuery] = useState("");
   //1
@@ -51,10 +48,12 @@ function App() {
     await setResults(data.results);
     console.log(data);
     console.log("data logged ^");
+    await localStorage.setItem("results", JSON.stringify(data));
   }
   function clearData() {
     console.log(results);
     setResults([]);
+    localStorage.clear();
     console.log(results);
   }
   function displayProtein() {
@@ -109,7 +108,10 @@ function App() {
     setMaxCalories("&minCalories=" + temp);
     console.log(query);
   }
-
+  useEffect(() => {
+    localStorage.getItem("results") &&
+      setResults(JSON.parse(localStorage.getItem("results")).results);
+  }, []);
   return (
     <div>
       <h1 className="center title">Recipe App </h1>
@@ -187,12 +189,12 @@ function App() {
         </button>
       </div>
       <br />
-      {results.length != 0 && (
+      {results && results.length != 0 && (
         <button onClick={() => clearData()} className="center btn btn-danger">
           Reset
         </button>
       )}
-      {results && <Recipe items={results} />}
+      {results && <Recipe items={results} API_KEY={API_KEY} />}
     </div>
   );
 }

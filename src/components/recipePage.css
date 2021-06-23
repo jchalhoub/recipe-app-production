@@ -1,0 +1,34 @@
+.recipe-container-indiv {
+  border: 1px solid #38464b;
+}
+.grid {
+  display: grid;
+   grid-gap: 1rem;
+  grid-template-columns: 50%;
+}
+.grid-left {
+  border: 2.5px solid grey;
+  padding:5px;
+  border-radius: 20px;
+  min-width: 50%;
+}
+ .grid-left:hover{
+  border: 2.5px solid black;
+}
+ .grid-right:hover{
+  border: 2.5px solid black;
+}
+.grid-right {
+  border: 2.5px solid grey;
+  padding:5px;
+  border-radius: 20px;
+  
+  grid-column:2;
+}
+.padded{
+  padding:10px
+}
+
+.margined{
+  margin:5px;
+}
